@@ -5,4 +5,6 @@
     text-decoration: none;
     font-family: sans-serif;
     box-sizing: border-box; /* Asegura relleno y borde incluido */
+    /* clear:both; Respetar cajas flotantes dentro de una fila */
+    /* display:table; Respetar las filas aun si es string */
 }

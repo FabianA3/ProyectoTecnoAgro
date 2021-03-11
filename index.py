@@ -50,10 +50,10 @@ def Login():
                 session['correo'] = correo
                 return render_template('inicio.html')
             else:
-                flash('La contraseña es incorrecta')
+                flash('La contraseña es incorrecta!', 'danger')
                 return render_template("login.html")
         else:
-            flash('Usuario no existe')
+            flash('Email incorrecto!', 'danger')
             return render_template("login.html")
 
 @app.route('/agregarUsuario', methods=['POST'])
@@ -66,7 +66,7 @@ def agregarUsuario():
         contrasena = request.form['contrasena']
 
         if not (nombres and  documento and telefono and correo and contrasena):
-            flash('No puede haber campos vacios')
+            flash('No puede haber campos vacios!', 'danger')
         else:
             password_encode = contrasena.encode('utf-8')
             password_encriptado = bcrypt.hashpw(password_encode, semilla)
@@ -74,11 +74,11 @@ def agregarUsuario():
             cur.execute('INSERT INTO `usuarios`(`nombresUsuario`, `documentoUsuario`, `telefonoUsuario`, `correoUsuario`, `contrasenaUsuario`) VALUES (%s, %s, %s, %s, %s)', (nombres, documento, telefono, correo, password_encriptado))
             mysql.connection.commit()
 
-            session['nombres'] = nombres
-            session['correo'] = correo
-            session['contrasena'] = password_encriptado
+            #session['nombres'] = nombres
+            #session['correo'] = correo
+            #session['contrasena'] = password_encriptado
 
-            flash('Cuenta creada exitosamente')
+            flash('Cuenta creada exitosamente', 'success')
 
         return redirect(url_for('Login'))
 

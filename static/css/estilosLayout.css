@@ -11,7 +11,7 @@ body {
   color: var(--primary);
 }
 
-a:hover {
+a:hover{
   text-decoration: none;
 }
 
@@ -82,4 +82,15 @@ a:hover {
   .stat {
     border: 0;
   }
+}
+
+.text-direccion{
+  color: var(--white);
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+a .ubicacion{
+  color: white;
 }

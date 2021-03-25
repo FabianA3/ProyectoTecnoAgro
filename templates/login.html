@@ -34,14 +34,14 @@
             <div class="login-form">
                 <div class="sign-in-htm">
                     <!-- Formulario Login -->
-                    <form action="/login" method="POST">
+                    <form action="/login" method="POST" class="was-validate">
                         <div class="group">
                             <label name="correoLogin" class="label">Correo Electronico</label>
-                            <input name="correoLogin" type="text" class="input">
+                            <input name="correoLogin" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label name="contrasenaLogin" class="label">Contraseña</label>
-                            <input name="contrasenaLogin" type="password" class="input" data-type="password">
+                            <input name="contrasenaLogin" type="password" class="input" data-type="password" required>
                         </div>
                         <div class="group">
                             <input id="check" type="checkbox" class="check" checked>
@@ -58,32 +58,35 @@
                 </div>
                 <div class="sign-up-htm">
                     <!-- formulario Registro -->
-                    <form action="/agregarUsuario" method="POST">
+                    <form action="/agregarUsuario" method="POST" class="was-validate">
                         <div class="group">
                             <label name="nombres" class="label">Nombre y Apellido</label>
-                            <input name="nombres" type="text" class="input">
+                            <input name="nombres" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label name="documento" class="label">Documento</label>
-                            <input name="documento" type="number" class="input">
+                            <input name="documento" type="number" class="input" required>
                         </div>
                         <div class="group">
                             <label name="telefono" class="label">Telefono</label>
-                            <input name="telefono" type="number" class="input">
+                            <input name="telefono" type="number" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label name="direccion" class="label">Direccion</label>
+                            <input name="direccion" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label name="correo" class="label">Correo Electronico</label>
-                            <input name="correo" type="text" class="input">
+                            <input name="correo" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label name="contrasena" class="label">Contraseña</label>
-                            <input name="contrasena" type="password" class="input" data-type="password">
+                            <input name="contrasena" type="password" class="input" data-type="password" required>
                         </div>
                         <div class="group">
                             <input type="submit" class="button" value="Registrarse">
                         </div>
                     </form>
-                    <div class="hr"></div>
                 </div>
             </div>
         </div>

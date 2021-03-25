@@ -39,10 +39,23 @@
                                     class="img" alt=""></a>
                         </div>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col-12 align-self-center">
+                    <div class="row">
+                        <div class="col-12">
                             <a href="/inicio">
-                                <h4 class="text-light font-weight-bold mb-0 ml-4 mt-3 p-2">Tecno-Agro</h4>
+                                <h4 class="text-light font-weight-bold mb-0 ml-4 mt-1 p-2">Tecno-Agro</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 m-0 p-0">
+                            <a href="#"><i class="icon ion-md-pin ubicacion h1 ml-2"></i></a>
+                        </div>
+                        <div class="col-10 m-0 p-0 mt-2">
+                            <a href="#">
+                                <p class="text-direccion">Enviar a <span>{{session['nombres']}}</span></p>
+                            </a>
+                            <a href="#">
+                                <p class="text-direccion"><span>{{session['direccion']}}</span></p>
                             </a>
                         </div>
                     </div>
@@ -85,20 +98,22 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container">
-
-                    <button class="navbar-toggler mb-2" type="button" data-toggle="collapse"
+                    <button class="col-2 navbar-toggler mb-2" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <a class="link" href="#">Carrito</a>
-                    <a class="link" href="#">Notificaciones</a>
-                    <a class="link" href="#">Favoritos</a>
+                    <a class="d-block text-dark p-3 border-0" href="#"><i
+                            class="icon ion-md-cart mr-2 p-2"></i>Carrito</a>
+                    <a class="d-block text-dark p-3 border-0" href="#"><i
+                            class="icon ion-md-notifications mr-2 p-2"></i>Notificaciones</a>
+                    <a class="d-block text-dark p-3 border-0 mr-5" href="#"><i
+                            class="icon ion-md-heart mr-2 p-2"></i>Favoritos</a>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                            <input class="form-control ml-3" type="search" placeholder="Buscar" aria-label="Search">
                             <button class="btn btn-primary" type="submit"><i class="icon ion-md-search"></i></button>
                         </form>
                         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -133,9 +148,9 @@
                                     <a href="#" class="dropdown-item">publicaciones</a>
                                     <a href="" class="dropdown-item">Ventas</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="" class="dropdown-item">Mis datos</a>
+                                    <a href="/misDatos" class="dropdown-item">Mis datos</a>
                                     <a href="" class="dropdown-item">Seguridad</a>
-                                    <a href="" class="dropdown-item">Privacidad</a>
+                                    <a href="/privacidad" class="dropdown-item">Privacidad</a>
                                     <a href="" class="dropdown-item">E-mails</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item mb-2" href="/salir"><i
@@ -180,6 +195,8 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
         integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename = 'js/main.js')}}"></script>
 </body>
 
 </html>

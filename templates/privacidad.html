@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <h2 class="mt-4 font-weight-bold">Privacidad</h2>
+    <div class="row">
+        <div class="col-12">
+            <p>Permitir el uso de tu informacion personal</p>
+            <input type="checkbox" name="" id="" required>
+            <a href="/eliminarUsuario/{{session['id']}}" class="btn-eliminar">Eliminar cuenta</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

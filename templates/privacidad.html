@@ -4,10 +4,30 @@
 <div class="container">
     <h2 class="mt-4 font-weight-bold">Privacidad</h2>
     <div class="row">
-        <div class="col-12">
-            <p>Permitir el uso de tu informacion personal</p>
-            <input type="checkbox" name="" id="" required>
-            <a href="/eliminarUsuario/{{session['id']}}" class="btn-eliminar">Eliminar cuenta</a>
+        <div class="col-12 p-4">
+            <div class="card">
+                <div class="card-header">
+                    <input type="checkbox" name="" id="" checked required>
+                    <span class="text-dark ml-2 font-weight-bold p-2">Permitir el uso de tu informacion personal</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Eliminar tus datos</h4>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Cancelar mi cuenta y eliminar mi registro de la base de datos</p>
+                        <footer class="blockquote-footer">
+                            <a href="/eliminarUsuario/{{session['id']}}" class="btn-eliminar">Eliminar cuenta</a>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
         </div>
     </div>
 </div>

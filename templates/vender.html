@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron p-3">
+        <h3 class="text-center font-weight-bold">Guardar Productos</h3>
+    </div>
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        <span>{{message}}</span>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-6">
+            <form action="/agregarProducto" method="post" class="was-validate" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nombreProducto" class="lead">Nombre del producto</label>
+                    <input type="text" name="nombreProducto" class="form-control"
+                        placeholder="Ingrese nombre del producto" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio" class="lead">Precio <span>(Kg)</span></label>
+                    <input type="number" name="precio" class="form-control" placeholder="Ingrese el precio del producto"
+                        required>
+                </div>
+                <div class="form-group">
+                    <div class="input-group mt-4">
+                        <label class="input-group-text font-weight-bold" for="categorias">Categorias</label>
+                        <select class="form-select  form-control" id="categorias" name="categorias">
+                            <option value="fruta">Frutas</option>
+                            <option value="verdura">Verduras</option>
+                            <option value="Hortaliza">Hortalizas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ubicacion" class="lead">Ubicación</label>
+                    <input type="text" name="ubicacion" class="form-control"
+                        placeholder="Ingrese la ubicación del producto" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion" class="lead">Descripcion</label>
+                    <textarea name="descripcion" id="" class="form-control"
+                        placeholder="Ingrese la descripcion del producto" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="disponibilidad" class="lead">Disponibilidad</label>
+                    <input type="text" name="disponibilidad" class="form-control"
+                        placeholder="Ingrese el stock del producto (Lb-Kg)" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="checkEnvio" id="checkEnvio">
+                    <span class="text-dark ml-2 font-weight-bold p-2 lead">Ofrecer envio</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,28 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<h1 class="font-weight-bold mb-0">Bienvenido(a) <span>{{session['nombres']}}</span></h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex obcaecati id, culpa eligendi delectus velit atque fugit! Voluptas, necessitatibus ea! Aspernatur odio eveniet, facere voluptatibus asperiores accusamus ad sunt earum corporis dolor molestiae nesciunt pariatur maiores et nam fugiat, unde necessitatibus modi? Perferendis, maiores! In eos vitae similique dignissimos est.</p>
+<div class="container">
+    <div class="jumbotron p-2">
+        <h2 class="text-center font-weight-bold">Mercado</h2>
+        <h5 class="font-weight-bold mb-0 text-center">Bienvenido(a) <span>{{session['nombres']}}</span></h5>
+    </div>
+    <div class="row">
+        {% for producto in productos %}
+        <a href="#" class="mb-3">
+            <div class="col-2">
+                <div class="card" style="width: 19.5rem;">
+                    <img class="card-img-top" src="../static/Img/pexels-todd-trapani-1405930.jpg" height="250">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ producto.1 }}</h3>
+                        <p class="card-text font-weight-bold text-primary"> Precio(Kg): <span class="text-dark">{{
+                                producto.2 }} COP</span></p>
+                        <p class="card-text font-weight-bold text-primary m-0 p-0">Descripcion:</p>
+                        <p class="text-dark">{{ producto.5 }}</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

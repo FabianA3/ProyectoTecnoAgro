@@ -8,10 +8,10 @@
     </div>
     <div class="row">
         {% for producto in productos %}
-        <a href="#" class="mb-3">
+        <a href="/producto/{{producto.0}}" class="mb-3">
             <div class="col-2">
                 <div class="card" style="width: 19.5rem;">
-                    <img class="card-img-top" src="../static/Img/pexels-todd-trapani-1405930.jpg" height="250">
+                    <img class="card-img-top" src="../static/imgProductos/{{ producto.0 }}.jpg" height="250">
                     <div class="card-body">
                         <h3 class="card-title">{{ producto.1 }}</h3>
                         <p class="card-text font-weight-bold text-primary"> Precio(Kg): <span class="text-dark">{{

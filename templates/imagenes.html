@@ -2,49 +2,38 @@
 {% block body %}
 <div class="container">
     <div class="jumbotron p-3">
-        <h3 class="text-center font-weight-bold">Guardar Productos</h3>
+        <h3 class="text-center font-weight-bold">Publicar Producto</h3>
     </div>
-    {% with messages = get_flashed_messages(with_categories = true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-        <span>{{message}}</span>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
     <div class="row">
-        {% for producto in productos %}
         <div class="col-6">
             <div class="form-group">
                 <label for="nombreProducto" class="lead">Nombre del producto</label>
-                <input type="text" name="nombreProducto" class="form-control" placeholder="{{producto.1}}" disabled>
+                <input type="text" name="nombreProducto" class="form-control" placeholder="{{ session['nombreProducto'] }}" disabled>
             </div>
             <div class="form-group">
                 <label for="precio" class="lead">Precio <span>(Kg)</span></label>
-                <input type="number" name="precio" class="form-control" placeholder="{{producto.2}}" disabled>
+                <input type="number" name="precio" class="form-control" placeholder="{{session['precioProducto']}}" disabled>
             </div>
             <div class="form-group">
                 <div class="input-group mt-4">
                     <label class="input-group-text font-weight-bold" for="categorias">Categorias</label>
                     <select class="form-select  form-control" id="categorias" name="categorias">
-                        <option value="fruta">{{producto.3}}</option>
+                        <option value="fruta">{{session['categoriaProducto']}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="ubicacion" class="lead">Ubicación</label>
-                <input type="text" name="ubicacion" class="form-control" placeholder="{{producto.4}}" disabled>
+                <input type="text" name="ubicacion" class="form-control" placeholder="{{session['ubicacionProducto']}}" disabled>
             </div>
             <div class="form-group">
                 <label for="descripcion" class="lead">Descripcion</label>
-                <textarea name="descripcion" id="" class="form-control" placeholder="{{producto.5}}" rows="5" disabled></textarea>
+                <textarea name="descripcion" id="" class="form-control" placeholder="{{session['descripcionProducto']}}" rows="5" disabled></textarea>
             </div>
             <div class="form-group">
                 <label for="disponibilidad" class="lead">Disponibilidad</label>
                 <input type="text" name="disponibilidad" class="form-control"
-                    placeholder="{{producto.6}}" disabled>
+                    placeholder="{{session['disponibilidadProducto']}}" disabled>
             </div>
             <div class="form-group">
                 {% if check == on %}
@@ -53,9 +42,8 @@
                 {% endif %}
             </div>
         </div>
-        {% endfor %}
         <div class="col-6">
-            <form action="" method="post" enctype="multipart/form-data" class="was-validate">
+            <form action="/agregarImagen" method="POST" enctype="multipart/form-data" class="was-validate">
                 <div class="jumbotron pt-5 text-center">
                     <h3>Agregar imagenes</h3>
                     <div class="form-group pt-4">

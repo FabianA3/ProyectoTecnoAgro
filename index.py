@@ -82,9 +82,32 @@ def Vender():
 def Imagenes():
     if 'nombres' in session:
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM `productos`')
+        cur.execute('SELECT MAX(idProducto) AS id FROM `productos`')
+        dataIdProducto = cur.fetchone()
+
+        if dataIdProducto:
+            cur = mysql.connection.cursor()
+            sql = ('SELECT * FROM `productos` WHERE `idproducto` = %s')
+            cur.execute(sql,[dataIdProducto[0]])
+            dataProducto = cur.fetchone()
+            session['idProducto'] = dataProducto[0]
+            session['nombreProducto'] = dataProducto[1]
+            session['precioProducto'] = dataProducto[2]
+            session['categoriaProducto'] = dataProducto[3]
+            session['ubicacionProducto'] = dataProducto[4]
+            session['descripcionProducto'] = dataProducto[5]
+            session['disponibilidadProducto'] = dataProducto[6]
+        return render_template('imagenes.html', productos = dataProducto)
+    else:
+        return render_template('index.html')
+
+@app.route('/producto/<string:idProducto>')
+def Producto(idProducto):
+    if 'nombres' in session:
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM `productos` WHERE `idproducto` = {0}'.format(idProducto))
         data = cur.fetchall()
-        return render_template('imagenes.html', productos = data)
+        return render_template('producto.html', productosP = data[0])
     else:
         return render_template('index.html')
 
@@ -219,26 +242,24 @@ def agregarProducto():
         categoriasProducto = request.form['categorias']
         descripcionProducto = request.form['descripcion']
         disponibilidadProducto = request.form['disponibilidad']
-        check = request.form['checkEnvio']
-        session['checkEnvio'] = check
+
         cur = mysql.connection.cursor()
         cur.execute('INSERT INTO `productos`(`nombreProducto`, `precioProducto`, `categoriasProducto`, `ubicacionProducto`, `descripcionProducto`, `disponibilidadProducto`, `usuarios_idusuario`) VALUES (%s, %s, %s, %s, %s, %s, %s)', (nombreProducto, precioProducto, categoriasProducto, ubicacionProducto, descripcionProducto, disponibilidadProducto, session['idUsuario']))
         mysql.connection.commit()
-        Inicio()
+
         flash('Producto registrado exitosamente', 'success')
 
-        """ files = request.files.getlist('imagenes')
+        return redirect(url_for('Imagenes'))
+
+@app.route('/agregarImagen', methods= ['POST'])
+def AgregarImagen():
+    if request.method == "POST":
+        files = request.files.getlist('imagenes')
         for file in files:
-            try:
-                filename = secure_filename(file.filename)
-                img = file.save(os.getcwd() + "/static/imgProductos/" + str(session['idProducto']) + ".jpg")
-                print('si hay imagen')
-            except FileNotFoundError:
-                return "error" """
+            filename = secure_filename(file.filename)
+            img = file.save(os.getcwd() + "/static/imgProductos/" + str(session['idProducto']) + ".jpg")
 
-        return redirect(url_for('Vender'), check)
-
-    
+            return redirect(url_for('Inicio'))
 
 # Inicio app
 if __name__ == "__main__": 

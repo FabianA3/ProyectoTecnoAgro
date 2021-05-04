@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container pt-4" style="width: 70%;">
+    <p class="lead">Hola {{session['nombres']}},</p>
+    <h3 class="pb-4">¿En qué podemos ayudarte?</h3>
+    <a href="#" class="text-dark">
+        <div class="p-3" style="height: 60px; margin-bottom: 10px; background: #E9ECEF;">
+            <i class="icon ion-md-pricetags lead mr-3"></i>Comprando
+        </div>
+    </a>
+    <a href="#" class="text-dark">
+        <div class="p-3" style="height: 60px; margin-bottom: 10px; background: #E9ECEF;">
+            <i class="icon ion-md-bookmark lead mr-3"></i>Vendiendo
+        </div>
+    </a>
+    <a href="#" class="text-dark">
+        <div class="p-3" style="height: 60px; margin-bottom: 10px; background: #E9ECEF;">
+            <i class="icon ion-md-person lead mr-3"></i>Configuración de mi cuenta
+        </div>
+    </a>
+    <a href="#" class="text-dark">
+        <div class="p-3" style="height: 60px; margin-bottom: 10px; background: #E9ECEF;">
+            <i class="icon ion-md-lock lead mr-3"></i>Seguridad
+        </div>
+    </a>
+    <hr>
+    <h3 class="pb-4">¿Necesitas mas ayuda?</h3>
+    <a href="#" class="text-dark">
+        <div class="p-3" style="height: 60px; margin-bottom: 10px; background: #E9ECEF;">
+            <i class="icon ion-md-call lead mr-3"></i>Contactanos
+        </div>
+    </a>
+</div>
+{% endblock %}

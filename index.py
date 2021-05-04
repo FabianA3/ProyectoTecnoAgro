@@ -3,9 +3,13 @@ from flask_mysqldb import MySQL
 import bcrypt
 from werkzeug.utils import secure_filename
 import os
+from datetime import datetime,timedelta
 
 UPLOAD_FOLDER = '/static/imgProductos'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+fechaActual = datetime.now()
+fechaAgregada = fechaActual + timedelta (days = 5)
 
 app = Flask(__name__)
 
@@ -31,7 +35,10 @@ def index():
     if 'nombres' in session:
         return render_template("inicio.html")
     else:
-        return render_template('index.html')
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM `productos`')
+        data = cur.fetchall()
+        return render_template('index.html', productos = data)
 
 @app.route('/inicio')
 def Inicio():
@@ -39,9 +46,14 @@ def Inicio():
         cur = mysql.connection.cursor()
         cur.execute('SELECT * FROM `productos`')
         data = cur.fetchall()
+        session['fechaEnvio'] = FechaEnvio(fechaAgregada)
         return render_template("inicio.html", productos = data)
     else:
         return render_template('login.html')
+
+def FechaEnvio(date):
+    mes = ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
+    return ("{d} de {m} del {y}".format(d = date.day, m = mes[date.month - 1], y = date.year))
 
 @app.route('/misDatos')
 def MisDatos():
@@ -108,6 +120,13 @@ def Producto(idProducto):
         cur.execute('SELECT * FROM `productos` WHERE `idproducto` = {0}'.format(idProducto))
         data = cur.fetchall()
         return render_template('producto.html', productosP = data[0])
+    else:
+        return render_template('index.html')
+
+@app.route('/ayuda')
+def Ayuda():
+    if 'nombres' in session:
+        return render_template('ayuda.html')
     else:
         return render_template('index.html')
 

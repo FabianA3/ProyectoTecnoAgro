@@ -16,6 +16,49 @@
   --youtube: #ff0000;
 }
 
+a{
+  text-decoration: none;
+}
+
+h3{
+  color: #111b54;
+}
+
+.logo{
+  margin-left: 6%;
+}
+
+.logo .tituloL{
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+}
+
+.btnLogin{
+  margin-right: 6%;
+  background: #fff;
+  color:#111b54;
+}
+
+.btnLogin:hover{
+  background:#d3d5da;
+  font-size: 16px;
+  transition: 1s;
+}
+
+.logo .tituloL img{
+  margin-right: 15px;
+}
+
+.jumbotron{
+  background: #E9ECEF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+h5{
+  color: #111b54;
+}
 
 .links-footer {
   text-decoration: none;
@@ -65,12 +108,15 @@
 .redes-container ul li .facebook:hover {
   background: var(--facebook);
 }
+
 .redes-container ul li .instagram:hover {
   background: var(--instagram);
 }
+
 .redes-container ul li .twitter:hover {
   background: var(--twitter);
 }
+
 .redes-container ul li .youtube:hover {
   background: var(--youtube);
 }

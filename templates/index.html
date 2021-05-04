@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Aplicativo web para el comercio de productos agricolas, cultivos y demas servicios agropecuarios.">
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="../static/Img/image.png" type="image/x-icon">
 
@@ -33,11 +33,41 @@
 </head>
 
 <body>
-    <a class="btn btn-primary" href="/login">login</a>
+    <nav class="navbar navbar-light mb-4 p-2" style="background: #111b54;">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="/" class="lead tituloL"><img src="../static/Img/image.png" height="60" alt="">Tecno-Agro</a>
+            </div>
+            <a class="btn btnLogin" href="/login">Iniciar Session</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron p-2">
+            <h2 class="text-center font-weight-bold">Mercado</h2>
+        </div>
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-4">
+                <a href="/login">
+                    <div class="card mb-4" style="width: 22rem;">
+                        <img class="card-img-top" src="../static/imgProductos/{{ producto.0 }}.jpg" height="250">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ producto.1 }}</h3>
+                            <p class="card-text font-weight-bold text-primary"> Precio(Kg): <span class="text-dark">{{
+                                    producto.2 }} COP</span></p>
+                            <p class="card-text font-weight-bold text-primary m-0 p-0">Descripcion:</p>
+                            <p class="text-dark">{{ producto.5 }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
     <!-- footer -->
-    <footer class="bg-light text-center text-lg-start">
+    <footer class="text-center text-lg-start" style="background: #E9ECEF ;">
         <div class="container p-4">
             <div class="row">
                 <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
@@ -59,12 +89,16 @@
                     <h5 class="text-uppercase">Redes sociales</h5>
                     <div class="redes-container">
                         <ul class="list-unstyled mb-0 mt-3">
-                            <li><a href="http://facebook.com" class="facebook" target="blank"><i class="fab fa-facebook-f"></i></a>
+                            <li><a href="http://facebook.com" class="facebook" target="blank"><i
+                                        class="fab fa-facebook-f"></i></a>
                             </li>
-                            <li><a href="http://instagramcom" class="instagram" target="blank"><i class="fab fa-instagram"></i></a>
+                            <li><a href="http://instagramcom" class="instagram" target="blank"><i
+                                        class="fab fa-instagram"></i></a>
                             </li>
-                            <li><a href="http://twitter.com" class="twitter" target="blank"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="http://youtube.com" class="youtube" target="blank"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="http://twitter.com" class="twitter" target="blank"><i
+                                        class="fab fa-twitter"></i></a></li>
+                            <li><a href="http://youtube.com" class="youtube" target="blank"><i
+                                        class="fab fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -78,9 +112,9 @@
                 </div>
             </div>
         </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="text-center p-3" style="background: #6c7292; color: #fff;">
             © 2021 Copyright:
-            <a class="text-dark text-decoration-none" href="https://mdbootstrap.com/">Tecno-agro.com</a>
+            <a class="text-light text-decoration-none" href="https://mdbootstrap.com/">Tecno-agro.com</a>
         </div>
     </footer>
 

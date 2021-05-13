@@ -30,7 +30,7 @@ app.secret_key = 'clavesecreta'
 semilla = bcrypt.gensalt()
 
 # Rutas
-@app.route("/") 
+@app.route("/", methods=['GET']) 
 def index(): 
     if 'nombres' in session:
         return render_template("inicio.html")
@@ -136,7 +136,7 @@ def Salir():
     return redirect(url_for('index'))
 
 # Funciones Crud Usuario
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def Login():
     if request.method == 'GET':
         if 'nombres' in session:
@@ -282,4 +282,4 @@ def AgregarImagen():
 
 # Inicio app
 if __name__ == "__main__": 
-        app.run(debug=True, port= 8000)   
+    app.run(debug=True, port= 8000)   

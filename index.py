@@ -136,7 +136,7 @@ def Salir():
     return redirect(url_for('index'))
 
 # Funciones Crud Usuario
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST','GET'])
 def Login():
     if request.method == 'GET':
         if 'nombres' in session:
@@ -177,7 +177,7 @@ def Login():
             flash('Email incorrecto!', 'danger')
             return render_template("login.html")
 
-@app.route('/agregarUsuario', methods=['POST'])
+@app.route('/agregarUsuario', methods=['POST','GET'])
 def agregarUsuario():
     if request.method == 'POST':
         nombres = request.form['nombres']
@@ -209,7 +209,7 @@ def eliminarUsuario(id):
     session.clear()
     return redirect(url_for('index'))
 
-@app.route('/modificarDomicilio/<id>', methods= ['POST'])
+@app.route('/modificarDomicilio/<id>', methods= ['POST','GET'])
 def modificarDomicilio(id):
     if request.method == 'POST':
         direccion = request.form['direccion']
@@ -220,7 +220,7 @@ def modificarDomicilio(id):
     session['direccion'] = direccion
     return redirect(url_for('MisDatos'))
 
-@app.route('/modificarDatosP/<id>', methods= ['POST'])
+@app.route('/modificarDatosP/<id>', methods= ['POST', 'GET'])
 def modificarDatosP(id):
     if request.method == 'POST':
         nombres = request.form['nombres']
@@ -235,7 +235,7 @@ def modificarDatosP(id):
     session['telefono'] = telefono
     return redirect(url_for('MisDatos'))
 
-@app.route('/modificarDatosC/<id>', methods= ['POST'])
+@app.route('/modificarDatosC/<id>', methods= ['POST', 'GET'])
 def modificarDatosC(id):
     if request.method == 'POST':
         correo = request.form['correo']
@@ -252,7 +252,7 @@ def modificarDatosC(id):
     return redirect(url_for('Seguridad'))
 
 # Funciones crud productos
-@app.route('/agregarProducto', methods= ['POST'])
+@app.route('/agregarProducto', methods= ['POST', 'GET'])
 def agregarProducto():
     if request.method == 'POST':
         nombreProducto = request.form['nombreProducto']
@@ -270,7 +270,7 @@ def agregarProducto():
 
         return redirect(url_for('Imagenes'))
 
-@app.route('/agregarImagen', methods= ['POST'])
+@app.route('/agregarImagen', methods= ['POST', 'GET'])
 def AgregarImagen():
     if request.method == "POST":
         files = request.files.getlist('imagenes')

@@ -30,7 +30,7 @@ app.secret_key = 'clavesecreta'
 semilla = bcrypt.gensalt()
 
 # Rutas
-@app.route("/", methods=['GET']) 
+@app.route("/") 
 def index(): 
     if 'nombres' in session:
         return render_template("inicio.html")

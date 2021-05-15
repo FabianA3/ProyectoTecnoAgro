@@ -14,10 +14,10 @@ fechaAgregada = fechaActual + timedelta (days = 5)
 app = Flask(__name__)
 
 # Conexion a la base de datos
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'Fabian'
-app.config['MYSQL_PASSWORD'] = 'fabian1997'
-app.config['MYSQL_DB'] = 'bd_tecno-agro'
+app.config['MYSQL_HOST'] = 'ik1eybdutgxsm0lo.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'
+app.config['MYSQL_USER'] = 'fxn2zdhe8ds0hcsa'
+app.config['MYSQL_PASSWORD'] = 'gkc588lg8tp2pzzi'
+app.config['MYSQL_DB'] = 'ch0tn8syk0hd57fh'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 

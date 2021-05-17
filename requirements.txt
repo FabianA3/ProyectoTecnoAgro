@@ -1,9 +1,9 @@
 Click==7.0
-Flask==1.0.2
+Flask==1.1.2
+mysqlclient==1.4.5
 mock==3.0.5
-mysqlclient==1.4.2.post1
 gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
-Werkzeug==0.14.1
+Werkzeug==1.0.1
